@@ -9,10 +9,10 @@ spec:
       repoURL: https://github.com/Tom-HA/gitops-deployments.git
       revision: HEAD
       directories:
-      - path: environments/**
+      - path: environments/*
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.[2]}}'
     spec:
       project: "default"
       source:
