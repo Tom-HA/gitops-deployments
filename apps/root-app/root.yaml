@@ -1,0 +1,32 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: exim-services
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/Tom-HA/gitops-deployments
+      revision: HEAD
+      directories:
+      - path: environments/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: "default"
+      source:
+        repoURL: 'https://github.com/Tom-HA/gitops-deployments'
+        path: ./charts/'{{path.basename}}'
+        targetRevision: HEAD
+        helm:
+          valueFiles:
+            - ./values.yaml
+            - ../../environments/{{path[0]}}/{{path.basename}}/values-env.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path[0]}}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
