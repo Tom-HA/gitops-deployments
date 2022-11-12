@@ -7,7 +7,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/Tom-HA/gitops-deployments
+      repoURL: https://github.com/Tom-HA/gitops-deployments.git
       revision: HEAD
       directories:
       - path: environments/*
@@ -17,8 +17,8 @@ spec:
     spec:
       project: "default"
       source:
-        repoURL: 'https://github.com/Tom-HA/gitops-deployments'
-        path: ./charts/'{{path.basename}}'
+        repoURL: https://github.com/Tom-HA/gitops-deployments.git
+        path: ./charts/{{path.basename}}
         targetRevision: HEAD
         helm:
           valueFiles:
