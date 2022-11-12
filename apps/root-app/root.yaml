@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/Tom-HA/gitops-deployments.git
       revision: HEAD
       directories:
-      - path: environments/*
+      - path: environments/**
   template:
     metadata:
       name: '{{path.basename}}'
@@ -25,7 +25,7 @@ spec:
             - ../../environments/{{path[0]}}/{{path.basename}}/values-env.yaml
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path[0]}}'
+        namespace: '{{path[1]}}'
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
