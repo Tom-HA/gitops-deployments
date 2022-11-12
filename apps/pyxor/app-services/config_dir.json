@@ -1,0 +1,13 @@
+{
+  "appName": "pyxor",
+  "userGivenName": "pyxor",
+  "destNamespace": "default",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "charts/pyxor",
+  "srcRepoURL": "https://github.com/Tom-HA/gitops-deployments.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null,
+  "exclude": "",
+  "include": ""
+}
